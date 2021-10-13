@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,18 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::prefix('admin')->group(function(){
-    Route::get('/', function(){
+    Route::prefix('admin')->group(function(){
+        Route::get('/', function(){
         return view('admin.index');
     });
-});
+        Route::get('/', function(){
+        return view('admin.create');
+    });
+    Route::get('/', function(){
+        return view('admin.show');
+    });
+    Route::get('/', function(){
+        return view('admin.edit');
+    });
+    });
+Route::resource('admin', BookController::class);

@@ -14,6 +14,9 @@ class BookController extends Controller
     public function index()
     {
         //
+        $nama = 'Altaf';
+        $namaBelakang = 'Faadhil';
+        return view('admin.index', compact('nama', 'namaBelakang'));
     }
 
     /**
@@ -24,6 +27,8 @@ class BookController extends Controller
     public function create()
     {
         //
+        $kelas = 'XII RPL 2';
+        return view('admin.create', compact('kelas'));
     }
 
     /**
@@ -46,6 +51,8 @@ class BookController extends Controller
     public function show($id)
     {
         //
+         $hobi = 'Basket';
+        return view('admin.show', compact('id', 'hobi'));
     }
 
     /**
@@ -57,6 +64,8 @@ class BookController extends Controller
     public function edit($id)
     {
         //
+        $warna = 'Biru';
+        return view('admin.edit', compact('warna'));
     }
 
     /**

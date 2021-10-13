@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1>Halaman Admin</h1>
+    <h1>Halaman User</h1>
+    Nama : {{ $nama }} {{ $namaBelakang }}
 @endsection
