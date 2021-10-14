@@ -20,19 +20,19 @@ use App\Http\Controllers\UserController;
 // });
 
 
-    Route::prefix('admin')->group(function(){
-        Route::get('/', function(){
-        return view('admin.index');
-    });
-        Route::get('/', function(){
-        return view('admin.create');
-    });
-    Route::get('/', function(){
-        return view('admin.show');
-    });
-    Route::get('/', function(){
-        return view('admin.edit');
-    });
-    });
+    // Route::prefix('admin')->group(function(){
+    //     Route::get('/', function(){
+    //     return view('admin.index');
+    // });
+    //     Route::get('/', function(){
+    //     return view('admin.create');
+    // });
+    // Route::get('/', function(){
+    //     return view('admin.show');
+    // });
+    // Route::get('/', function(){
+    //     return view('admin.edit');
+    // });
+    // });
 Route::resource('admin', BookController::class);
 Route::resource('user', UserController::class);

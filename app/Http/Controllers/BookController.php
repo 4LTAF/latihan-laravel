@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -14,9 +15,8 @@ class BookController extends Controller
     public function index()
     {
         //
-        $nama = 'Altaf';
-        $namaBelakang = 'Faadhil';
-        return view('admin.index', compact('nama', 'namaBelakang'));
+        $buku = Book::all();
+        return view('admin.index', compact('buku'));
     }
 
     /**
