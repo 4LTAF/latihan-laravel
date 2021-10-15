@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
-use App\Models\Pengarang;
 use Illuminate\Http\Request;
 
-class BookController extends Controller
+class PengarangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,6 @@ class BookController extends Controller
     public function index()
     {
         //
-        $buku = Book::all();
-        $pengarang = Pengarang::all();
-        return view('admin.index', compact('buku', 'pengarang'));
     }
 
     /**
@@ -29,8 +24,6 @@ class BookController extends Controller
     public function create()
     {
         //
-        $kelas = 'XII RPL 2';
-        return view('admin.create', compact('kelas'));
     }
 
     /**
@@ -53,8 +46,6 @@ class BookController extends Controller
     public function show($id)
     {
         //
-         $hobi = 'Basket';
-        return view('admin.show', compact('id', 'hobi'));
     }
 
     /**
@@ -66,8 +57,6 @@ class BookController extends Controller
     public function edit($id)
     {
         //
-        $warna = 'Biru';
-        return view('admin.edit', compact('warna'));
     }
 
     /**

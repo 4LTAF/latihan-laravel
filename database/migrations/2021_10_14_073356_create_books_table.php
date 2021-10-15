@@ -15,6 +15,8 @@ class CreateBooksTable extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('pengarang_id');
+            $table->foreign('pengarang_id')->references('id')->on('pengarangs');
             $table->string('nama_buku');
             $table->integer('jumlah_halaman')->default(0);
             $table->string('translate_judul_buku')->nullable();
