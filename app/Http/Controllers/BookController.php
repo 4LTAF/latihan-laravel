@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Pengarang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
@@ -29,8 +30,7 @@ class BookController extends Controller
     public function create()
     {
         //
-        $kelas = 'XII RPL 2';
-        return view('admin.create', compact('kelas'));
+       return view('admin.create');
     }
 
     /**
@@ -42,6 +42,12 @@ class BookController extends Controller
     public function store(Request $request)
     {
         //
+        $pengarang = new Pengarang();
+        $pengarang->nama_pengarang = $request->nama_penulis;
+        $pengarang->email = $request->email;
+        $pengarang->tlp = $request->tlp;
+        $pengarang->save();
+        return redirect()->route('admin.index');
     }
 
     /**
