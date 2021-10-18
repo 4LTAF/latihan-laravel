@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengarang;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 
 class PengarangController extends Controller
@@ -14,6 +17,8 @@ class PengarangController extends Controller
     public function index()
     {
         //
+        $pengarang = Pengarang::all();
+        return view('pengarang.index', compact('pengarang'));
     }
 
     /**
@@ -24,6 +29,7 @@ class PengarangController extends Controller
     public function create()
     {
         //
+        return view('pengarang.create');
     }
 
     /**
@@ -35,6 +41,17 @@ class PengarangController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'nama_pengarang' => 'required',
+            'email' => 'required|unique:pengarangs,email',
+            'tlp' => 'required|unique:pengarangs,tlp'
+        ]);
+        $pengarang = new Pengarang();
+        $pengarang->nama_pengarang = $request->nama_pengarang;
+        $pengarang->email = $request->email;
+        $pengarang->tlp = $request->tlp;
+        $pengarang->save();
+        return redirect()->route('pengarang.index');
     }
 
     /**
@@ -46,6 +63,8 @@ class PengarangController extends Controller
     public function show($id)
     {
         //
+        $pengarang = Pengarang::findOrFail($id);
+        return view('pengarang.show', compact('pengarang'));
     }
 
     /**
@@ -57,6 +76,8 @@ class PengarangController extends Controller
     public function edit($id)
     {
         //
+         $pengarang = Pengarang::findOrFail($id);
+        return view('pengarang.edit', compact('pengarang'));
     }
 
     /**
@@ -69,6 +90,18 @@ class PengarangController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validated = $request->validate([
+            'nama_pengarang' => 'required',
+            'email' => 'required|unique:pengarangs,email,' .$id,
+            'tlp' => 'required|unique:pengarangs,tlp,'  .$id
+        ]);
+
+        $pengarang = Pengarang::findOrFail($id);
+        $pengarang->nama_pengarang = $request->nama_pengarang;
+        $pengarang->email = $request->email;
+        $pengarang->tlp = $request->tlp;
+        $pengarang->save();
+        return redirect()->route('pengarang.index');
     }
 
     /**
@@ -80,5 +113,7 @@ class PengarangController extends Controller
     public function destroy($id)
     {
         //
+        $pengarang = Pengarang::findOrFail($id)->delete();
+        return redirect()->route('pengarang.index');
     }
 }
